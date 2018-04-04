@@ -1,13 +1,21 @@
 //Declaración de variables
-var nombreUsuario = 'Lu Moreno'
-var saldoCuenta = 10000
-var limiteExtraccion = 3000
+const nombreUsuario = 'Lu Moreno';
+let saldoCuenta = 10000;
+let limiteExtraccion = 3000;
 
 
 //Ejecución de las funciones que actualizan los valores de las variables en el HTML
 cargarNombreEnPantalla();
 actualizarSaldoEnPantalla();
 actualizarLimiteEnPantalla();
+
+function sumarDinero(saldoCuenta, num1){
+  saldoCuenta + num1;
+}
+
+function restarDinero(saldoCuenta, num2){
+  saldoCuenta - num2;
+}
 
 //Funciones que tenes que completar
 function cambiarLimiteDeExtraccion() {
@@ -19,7 +27,8 @@ function extraerDinero() {
 }
 
 function depositarDinero() {
-
+  let cantidadDeposito = prompt("Cuanto desea depositar?");
+  let plataDepositada = parseInt(cantidadDeposito);
 }
 
 function pagarServicio() {
