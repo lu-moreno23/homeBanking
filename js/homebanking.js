@@ -9,12 +9,16 @@ cargarNombreEnPantalla();
 actualizarSaldoEnPantalla();
 actualizarLimiteEnPantalla();
 
-function sumarDinero(saldoCuenta, num1){
-  saldoCuenta + num1;
+function sumarDineroACuenta(cantidadDinero){
+  saldoCuenta += cantidadDinero;
 }
 
-function restarDinero(saldoCuenta, num2){
-  saldoCuenta - num2;
+console.log(saldoCuenta);
+sumarDinero(140);
+console.log(saldoCuenta);
+
+function restarDineroACuenta(cantidadDinero){
+  saldoCuenta -= cantidadDinero;
 }
 
 //Funciones que tenes que completar
@@ -28,7 +32,8 @@ function extraerDinero() {
 
 function depositarDinero() {
   let cantidadDeposito = prompt("Cuanto desea depositar?");
-  let plataDepositada = parseInt(cantidadDeposito);
+  let saldoADepositar = parseInt(cantidadDeposito);
+  sumarDineroACuenta(saldoADepositar);
 }
 
 function pagarServicio() {
