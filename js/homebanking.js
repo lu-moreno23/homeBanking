@@ -19,7 +19,11 @@ function restarDineroACuenta(cantidadDinero){
 
 //Funciones que tenes que completar
 function cambiarLimiteDeExtraccion() {
-
+  let ingresoNuevoLimiteExtraccion = prompt ("Ingresar nuevo limite de extraccion");
+  let nuevoLimiteExtraccion = parseInt (ingresoNuevoLimiteExtraccion);
+  limiteExtraccion = nuevoLimiteExtraccion;
+  actualizarLimiteEnPantalla();
+  alert ("Tu nuevo limite de extraccion es: " + nuevoLimiteExtraccion);
 }
 
 function extraerDinero() {
