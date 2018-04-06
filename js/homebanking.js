@@ -19,26 +19,26 @@ function restarDineroACuenta(cantidadDinero){
 
 //Funciones que tenes que completar
 function cambiarLimiteDeExtraccion() {
-  let ingresoNuevoLimiteExtraccion = prompt ("Ingresar nuevo limite de extraccion");
+  let ingresoNuevoLimiteExtraccion = prompt ("Ingresar nuevo límite de extracción");
   let nuevoLimiteExtraccion = parseInt (ingresoNuevoLimiteExtraccion);
   limiteExtraccion = nuevoLimiteExtraccion;
   actualizarLimiteEnPantalla();
-  alert ("Tu nuevo limite de extraccion es: " + nuevoLimiteExtraccion);
+  alert ("Tu nuevo límite de extracción es: " + nuevoLimiteExtraccion);
 }
 
 function extraerDinero() {
   let saldoAnteriorAExtraccion = saldoCuenta;
-  let cantidadExtraccion = prompt ("Cuanto desea extraer?");
+  let cantidadExtraccion = prompt ("¿Cuánto desea extraer?");
   let saldoAExtraer = parseInt(cantidadExtraccion);
   restarDineroACuenta(saldoAExtraer);
   let saldoPosteriorAExtraccion = saldoCuenta;
   actualizarSaldoEnPantalla();
-  alert("Has extraido: " + cantidadExtraccion + "\n Saldo Anterior: " + saldoAnteriorAExtraccion + "\n Saldo Actual: " + saldoPosteriorAExtraccion);
+  alert("Has extraído: " + cantidadExtraccion + "\n Saldo Anterior: " + saldoAnteriorAExtraccion + "\n Saldo Actual: " + saldoPosteriorAExtraccion);
 }
 
 function depositarDinero() {
   let saldoAnteriorAlDeposito = saldoCuenta;
-  let cantidadDeposito = prompt("Cuanto desea depositar?");
+  let cantidadDeposito = prompt("¿Cuánto desea depositar?");
   let saldoADepositar = parseInt(cantidadDeposito);
   sumarDineroACuenta(saldoADepositar);
   let saldoPosteriorAlDeposito = saldoCuenta;
