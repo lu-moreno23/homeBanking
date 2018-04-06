@@ -13,10 +13,6 @@ function sumarDineroACuenta(cantidadDinero){
   saldoCuenta += cantidadDinero;
 }
 
-console.log(saldoCuenta);
-sumarDinero(140);
-console.log(saldoCuenta);
-
 function restarDineroACuenta(cantidadDinero){
   saldoCuenta -= cantidadDinero;
 }
@@ -27,13 +23,23 @@ function cambiarLimiteDeExtraccion() {
 }
 
 function extraerDinero() {
-
+  let saldoAnteriorAExtraccion = saldoCuenta;
+  let cantidadExtraccion = prompt ("Cuanto desea extraer?");
+  let saldoAExtraer = parseInt(cantidadExtraccion);
+  restarDineroACuenta(saldoAExtraer);
+  let saldoPosteriorAExtraccion = saldoCuenta;
+  actualizarSaldoEnPantalla();
+  alert("Has extraido: " + cantidadExtraccion + "\n Saldo Anterior: " + saldoAnteriorAExtraccion + "\n Saldo Actual: " + saldoPosteriorAExtraccion);
 }
 
 function depositarDinero() {
+  let saldoAnteriorAlDeposito = saldoCuenta;
   let cantidadDeposito = prompt("Cuanto desea depositar?");
   let saldoADepositar = parseInt(cantidadDeposito);
   sumarDineroACuenta(saldoADepositar);
+  let saldoPosteriorAlDeposito = saldoCuenta;
+  actualizarSaldoEnPantalla();
+  alert("Has depositado: " + cantidadDeposito + "\n Saldo Anterior: " + saldoAnteriorAlDeposito + "\n Saldo Actual: " + saldoPosteriorAlDeposito);
 }
 
 function pagarServicio() {
