@@ -30,11 +30,21 @@ function extraerDinero() {
   let saldoAnteriorAExtraccion = saldoCuenta;
   let cantidadExtraccion = prompt ("¿Cuánto desea extraer?");
   let saldoAExtraer = parseInt(cantidadExtraccion);
+  if (saldoAExtraer > limiteExtraccion){
+    alert("La cantidad de dinero que deseas extraer es mayor a tu limite de extraccion");
+  } else if (saldoAExtraer > saldoCuenta){
+    alert("No hay saldo disponible en tu cuenta para extraer esa cantidad de dinero");
+  } else if (saldoAExtraer%100 != 0) {
+    alert("Solo puedes extraer billetes de 100")
+  } else {
   restarDineroACuenta(saldoAExtraer);
   let saldoPosteriorAExtraccion = saldoCuenta;
   actualizarSaldoEnPantalla();
   alert("Has extraído: " + cantidadExtraccion + "\n Saldo Anterior: " + saldoAnteriorAExtraccion + "\n Saldo Actual: " + saldoPosteriorAExtraccion);
+  }
 }
+
+
 
 function depositarDinero() {
   let saldoAnteriorAlDeposito = saldoCuenta;
