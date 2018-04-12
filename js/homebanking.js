@@ -1,6 +1,6 @@
 //Declaración de variables
 const nombreUsuario = 'Lu Moreno';
-let saldoCuenta = 0;
+let saldoCuenta = 10000;
 let limiteExtraccion = 3000;
 
 
@@ -9,18 +9,13 @@ cargarNombreEnPantalla();
 actualizarSaldoEnPantalla();
 actualizarLimiteEnPantalla();
 
+//Funciones utilizadas para Extraccion de dinero y Deposito de dinero
 function sumarDineroACuenta(cantidadDinero){
   saldoCuenta += cantidadDinero;
 }
 
 function restarDineroACuenta(cantidadDinero){
   saldoCuenta -= cantidadDinero;
-}
-
-
-//Chequea si hay saldo disponible en la cuenta
-function haySaldoDisponible() {
-  return saldoCuenta > 0;
 }
 
 //Funciones que tenes que completar
@@ -36,7 +31,7 @@ function extraerDinero() {
   let saldoAnteriorAExtraccion = saldoCuenta;
   let cantidadExtraccion = prompt ("¿Cuánto desea extraer?");
   let saldoAExtraer = parseInt(cantidadExtraccion);
-  if (puedoSacarPlata()) {
+  if (saldoAExtraer > limiteExtraccion){
     alert("La cantidad de dinero que deseas extraer es mayor a tu limite de extraccion");
   } else if (saldoAExtraer > saldoCuenta){
     alert("No hay saldo disponible en tu cuenta para extraer esa cantidad de dinero");
@@ -50,22 +45,7 @@ function extraerDinero() {
   }
 }
 
-function puedoSacarPlata() {
-  return haySaldoDisponible() && extraccionValida();
-}
 
-function extraccionValida(saldoAExtraer, limiteExtraccion) {
-  if (saldoAExtraer > limiteExtraccion) {
-    alert("La cantidad de dinero que deseas extraer es mayor a tu limite de extraccion");
-  }
-}
-
-
-if (puedoSacarPlata()) {
-  hago algo
-} else {
-  hago otra cosa
-}
 
 function depositarDinero() {
   let saldoAnteriorAlDeposito = saldoCuenta;
