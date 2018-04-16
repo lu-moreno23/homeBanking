@@ -1,6 +1,6 @@
 //Declaración de variables
 const nombreUsuario = 'Lu Moreno';
-let saldoCuenta = 0;
+let saldoCuenta = 10000;
 let limiteExtraccion = 3000;
 
 
@@ -14,13 +14,7 @@ function sumarDineroACuenta(cantidadDinero){
 }
 
 function restarDineroACuenta(cantidadDinero){
-  saldoCuenta -= cantidadDinero;
-}
-
-
-//Chequea si hay saldo disponible en la cuenta
-function haySaldoDisponible() {
-  return saldoCuenta > 0;
+  return saldoCuenta -= cantidadDinero;
 }
 
 //Funciones que tenes que completar
@@ -32,39 +26,35 @@ function cambiarLimiteDeExtraccion() {
   alert ("Tu nuevo límite de extracción es: " + nuevoLimiteExtraccion);
 }
 
+
 function extraerDinero() {
-  let saldoAnteriorAExtraccion = saldoCuenta;
-  let cantidadExtraccion = prompt ("¿Cuánto desea extraer?");
-  let saldoAExtraer = parseInt(cantidadExtraccion);
-  if (puedoSacarPlata()) {
+  const saldoAnteriorAExtraccion = saldoCuenta;
+  const cantidadExtraccion = prompt ("¿Cuánto desea extraer?");
+  const saldoAExtraer = parseInt(cantidadExtraccion);
+  if (limiteExtraccionNoEsValido(saldoAExtraer,limiteExtraccion)){
     alert("La cantidad de dinero que deseas extraer es mayor a tu limite de extraccion");
-  } else if (saldoAExtraer > saldoCuenta){
+  } else if (noHaySaldoDisponibleEnCuenta(saldoAExtraer,saldoCuenta)){
     alert("No hay saldo disponible en tu cuenta para extraer esa cantidad de dinero");
-  } else if (saldoAExtraer%100 != 0) {
-    alert("Solo puedes extraer billetes de 100")
-  } else {
-  restarDineroACuenta(saldoAExtraer);
-  let saldoPosteriorAExtraccion = saldoCuenta;
-  actualizarSaldoEnPantalla();
+  } else if (noEntregaBilletesDeCien(saldoAExtraer)){
+    alert("Solo puedes extraer billetes de 100");
+  } else {restarDineroACuenta(saldoAExtraer)
+  const saldoPosteriorAExtraccion = saldoCuenta;
   alert("Has extraído: " + cantidadExtraccion + "\n Saldo Anterior: " + saldoAnteriorAExtraccion + "\n Saldo Actual: " + saldoPosteriorAExtraccion);
-  }
+  actualizarSaldoEnPantalla();
+}
 }
 
-function puedoSacarPlata() {
-  return haySaldoDisponible() && extraccionValida();
+  //Funciones utilizadas en extraerDinero
+function limiteExtraccionNoEsValido(saldoAExtraer, limiteExtraccion) {
+  return saldoAExtraer > limiteExtraccion
 }
 
-function extraccionValida(saldoAExtraer, limiteExtraccion) {
-  if (saldoAExtraer > limiteExtraccion) {
-    alert("La cantidad de dinero que deseas extraer es mayor a tu limite de extraccion");
-  }
+function noHaySaldoDisponibleEnCuenta(saldoAExtraer,saldoCuenta){
+  return saldoAExtraer > saldoCuenta
 }
 
-
-if (puedoSacarPlata()) {
-  hago algo
-} else {
-  hago otra cosa
+function noEntregaBilletesDeCien(saldoAExtraer){
+  return saldoAExtraer%100 != 0
 }
 
 function depositarDinero() {
@@ -77,9 +67,67 @@ function depositarDinero() {
   alert("Has depositado: " + cantidadDeposito + "\n Saldo Anterior: " + saldoAnteriorAlDeposito + "\n Saldo Actual: " + saldoPosteriorAlDeposito);
 }
 
-function pagarServicio() {
+//Variables para pago de servicios
+const agua = 350;
+const telefono = 425;
+const luz = 210;
+const internet = 570;
 
+
+function elegirServicioAPagar(){
+  let servicioAPagar = prompt('Ingrese el numero que corresponda con el servicio que queres pagar \n 1- Agua \n 2- Telefono \n 3- Luz \n 4- Internet');
+  let servicioAPagarSeleccionado = parseInt(servicioAPagar);
+  pagarServicio(servicioAPagarSeleccionado);
+  actualizarSaldoEnPantalla();
+  }
+
+
+function pagarServicio(servicioAPagarSeleccionado) {
+switch(servicioAPagarSeleccionado){
+  case 1:
+  if (servicioAPagarSeleccionado === 1){
+    return saldoCuenta -= agua
+  }
+  break;
+  case 2:
+  if (servicioAPagarSeleccionado === 2){
+    return saldoCuenta -= telefono
+  }
 }
+}
+
+//Funciones para el pago de servicios
+/*function pagoDelServicioDeAgua(saldoCuenta,servicioAPagar, agua){
+  if (servicioAPagar === 1){
+    saldoCuenta -= agua;
+  } else {
+    alert("No tenes suficiente dinero para pagar el servicio de Agua")
+  }
+}
+
+function pagoDelServicioDeTelefono(saldoCuenta, telefono){
+  if (saldoCuenta < telefono){
+    alert("No tenes suficiente plata para pagar este servicio");
+  } else {
+    return saldoCuenta -= telefono
+  }
+}
+
+function pagoDelServicioDeLuz(saldoCuenta, luz){
+  if (saldoCuenta < luz){
+    alert("No tenes suficiente plata para pagar este servicio");
+  } else {
+    return saldoCuenta -= luz
+  }
+}
+
+function pagoDelServicioDeInternet(saldoCuenta, internet){
+  if (saldoCuenta < internet){
+    alert("No tenes suficiente plata para pagar este servicio");
+  } else {
+    return saldoCuenta -= internet
+  }
+}*/
 
 function transferirDinero() {
 
