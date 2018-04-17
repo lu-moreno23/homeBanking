@@ -1,6 +1,6 @@
 //Declaración de variables
 const nombreUsuario = 'Lu Moreno';
-let saldoCuenta = 10000;
+let saldoCuenta = 50;
 let limiteExtraccion = 3000;
 
 
@@ -67,65 +67,86 @@ function depositarDinero() {
   alert("Has depositado: " + cantidadDeposito + "\n Saldo Anterior: " + saldoAnteriorAlDeposito + "\n Saldo Actual: " + saldoPosteriorAlDeposito);
 }
 
-//Variables para pago de servicios
+/*function elegirServicioAPagar(){
+  let servicioAPagar = prompt('Ingrese el numero que corresponda con el servicio que queres pagar \n 1- Agua \n 2- Telefono \n 3- Luz \n 4- Internet');
+  let servicioAPagarSeleccionado = parseInt(servicioAPagar);
+  pagarServicio(servicioAPagarSeleccionado, saldoCuenta, agua, telefono, luz, internet);
+  actualizarSaldoEnPantalla();
+  }*/
+
+
+function pagarServicio() {
+
 const agua = 350;
 const telefono = 425;
 const luz = 210;
 const internet = 570;
 
+let servicioAPagarSeleccionado = parseInt(prompt("Ingrese el numero que corresponda con el servicio que queres pagar" + "\n" + 
+"1- Agua" + "\n" + 
+"2- Telefono" + "\n" + 
+"3- Luz" + "\n" + 
+"4- Internet"));
 
-function elegirServicioAPagar(){
-  let servicioAPagar = prompt('Ingrese el numero que corresponda con el servicio que queres pagar \n 1- Agua \n 2- Telefono \n 3- Luz \n 4- Internet');
-  let servicioAPagarSeleccionado = parseInt(servicioAPagar);
-  pagarServicio(servicioAPagarSeleccionado);
-  actualizarSaldoEnPantalla();
-  }
-
-
-function pagarServicio(servicioAPagarSeleccionado) {
 switch(servicioAPagarSeleccionado){
   case 1:
-  if (servicioAPagarSeleccionado === 1){
-    return saldoCuenta -= agua
-  }
-  break;
+  ejecutarPagoDeServicio(agua);
+    break;
   case 2:
-  if (servicioAPagarSeleccionado === 2){
-    return saldoCuenta -= telefono
+  ejecutarPagoDeServicio(telefono);
+    break;
+  case 3:
+  ejecutarPagoDeServicio(luz);
+    break;
+  case 4:
+  ejecutarPagoDeServicio(internet);
+    break;
+  default: 
+    alert("El servicio seleccionado no existe");
   }
+actualizarSaldoEnPantalla();
 }
+
+function ejecutarPagoDeServicio(servicioAPagarSeleccionado){
+  //let saldoAnteriorAPagoServicio = saldoCuenta;
+  if (servicioAPagarSeleccionado > saldoCuenta){
+    alert("Tu saldo es insuficiente para pagar este servicio");
+  } else {
+    saldoCuenta -= servicioAPagarSeleccionado;
+    alert("Tu pago fue realizado con éxito");
+  }
 }
 
 //Funciones para el pago de servicios
-/*function pagoDelServicioDeAgua(saldoCuenta,servicioAPagar, agua){
-  if (servicioAPagar === 1){
+/*function pagarServicioDeAgua(saldoCuenta,servicioAPagarSeleccionado, agua){
+  if (saldoCuenta >= servicioAPagarSeleccionado){
     saldoCuenta -= agua;
   } else {
     alert("No tenes suficiente dinero para pagar el servicio de Agua")
   }
 }
 
-function pagoDelServicioDeTelefono(saldoCuenta, telefono){
-  if (saldoCuenta < telefono){
-    alert("No tenes suficiente plata para pagar este servicio");
+function pagarServicioTelefono(saldoCuenta,servicioAPagarSeleccionado, telefono){
+  if (saldoCuenta >= servicioAPagarSeleccionado){
+    saldoCuenta -= telefono;
   } else {
-    return saldoCuenta -= telefono
+    alert("No tenes suficiente dinero para pagar el servicio de Teléfono")
   }
 }
 
-function pagoDelServicioDeLuz(saldoCuenta, luz){
-  if (saldoCuenta < luz){
-    alert("No tenes suficiente plata para pagar este servicio");
+function pagarServicioDeLuz(saldoCuenta,servicioAPagarSeleccionado, luz){
+  if (saldoCuenta >= servicioAPagarSeleccionado){
+    saldoCuenta -= luz;
   } else {
-    return saldoCuenta -= luz
+    alert("No tenes suficiente dinero para pagar el servicio de Luz")
   }
 }
 
-function pagoDelServicioDeInternet(saldoCuenta, internet){
-  if (saldoCuenta < internet){
-    alert("No tenes suficiente plata para pagar este servicio");
+function pagarServicioInternet(saldoCuenta,servicioAPagarSeleccionado, internet){
+  if (saldoCuenta >= servicioAPagarSeleccionado){
+    saldoCuenta -= internet;
   } else {
-    return saldoCuenta -= internet
+    alert("No tenes suficiente dinero para pagar el servicio de Luz")
   }
 }*/
 
