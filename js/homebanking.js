@@ -108,7 +108,16 @@ function ejecutarPagoDeServicio(servicioAPagarSeleccionado){
   }
 }
 
-function transferirDinero() {
+function transferirDinero(montoATransferir) {
+const cuentaAmiga1 = 1234567
+const cuentaAmiga2 = 7654321
+
+let montoATransferir = parseInt(prompt("Ingrese el monto que desea transferir"));
+if(montoATransferir > saldoCuenta){
+  alert("Tu saldo es insuficiente para transferir ese monto");
+} else {
+  saldoCuenta -= montoATransferir;
+}
 
 }
 
