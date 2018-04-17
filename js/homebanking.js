@@ -1,6 +1,6 @@
 //Declaración de variables
 const nombreUsuario = 'Lu Moreno';
-let saldoCuenta = 50;
+let saldoCuenta = 1000;
 let limiteExtraccion = 3000;
 
 
@@ -67,14 +67,6 @@ function depositarDinero() {
   alert("Has depositado: " + cantidadDeposito + "\n Saldo Anterior: " + saldoAnteriorAlDeposito + "\n Saldo Actual: " + saldoPosteriorAlDeposito);
 }
 
-/*function elegirServicioAPagar(){
-  let servicioAPagar = prompt('Ingrese el numero que corresponda con el servicio que queres pagar \n 1- Agua \n 2- Telefono \n 3- Luz \n 4- Internet');
-  let servicioAPagarSeleccionado = parseInt(servicioAPagar);
-  pagarServicio(servicioAPagarSeleccionado, saldoCuenta, agua, telefono, luz, internet);
-  actualizarSaldoEnPantalla();
-  }*/
-
-
 function pagarServicio() {
 
 const agua = 350;
@@ -108,7 +100,6 @@ actualizarSaldoEnPantalla();
 }
 
 function ejecutarPagoDeServicio(servicioAPagarSeleccionado){
-  //let saldoAnteriorAPagoServicio = saldoCuenta;
   if (servicioAPagarSeleccionado > saldoCuenta){
     alert("Tu saldo es insuficiente para pagar este servicio");
   } else {
@@ -116,39 +107,6 @@ function ejecutarPagoDeServicio(servicioAPagarSeleccionado){
     alert("Tu pago fue realizado con éxito");
   }
 }
-
-//Funciones para el pago de servicios
-/*function pagarServicioDeAgua(saldoCuenta,servicioAPagarSeleccionado, agua){
-  if (saldoCuenta >= servicioAPagarSeleccionado){
-    saldoCuenta -= agua;
-  } else {
-    alert("No tenes suficiente dinero para pagar el servicio de Agua")
-  }
-}
-
-function pagarServicioTelefono(saldoCuenta,servicioAPagarSeleccionado, telefono){
-  if (saldoCuenta >= servicioAPagarSeleccionado){
-    saldoCuenta -= telefono;
-  } else {
-    alert("No tenes suficiente dinero para pagar el servicio de Teléfono")
-  }
-}
-
-function pagarServicioDeLuz(saldoCuenta,servicioAPagarSeleccionado, luz){
-  if (saldoCuenta >= servicioAPagarSeleccionado){
-    saldoCuenta -= luz;
-  } else {
-    alert("No tenes suficiente dinero para pagar el servicio de Luz")
-  }
-}
-
-function pagarServicioInternet(saldoCuenta,servicioAPagarSeleccionado, internet){
-  if (saldoCuenta >= servicioAPagarSeleccionado){
-    saldoCuenta -= internet;
-  } else {
-    alert("No tenes suficiente dinero para pagar el servicio de Luz")
-  }
-}*/
 
 function transferirDinero() {
 
