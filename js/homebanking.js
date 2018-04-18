@@ -42,6 +42,7 @@ function extraerDinero() {
   alert("Has extraído: " + cantidadExtraccion + "\n Saldo Anterior: " + saldoAnteriorAExtraccion + "\n Saldo Actual: " + saldoPosteriorAExtraccion);
   actualizarSaldoEnPantalla();
 }
+actualizarSaldoEnPantalla();
 }
 
   //Funciones utilizadas en extraerDinero
@@ -108,18 +109,42 @@ function ejecutarPagoDeServicio(servicioAPagarSeleccionado){
   }
 }
 
-function transferirDinero(montoATransferir) {
+
+function transferirDinero() {
 const cuentaAmiga1 = 1234567
 const cuentaAmiga2 = 7654321
+let cuentaSeleccionada= parseInt(prompt("Seleccione la cuenta a la que desea transferir" + 
+"\n" + 
+"Cuentas amigas:" + 
+"\n" + 
+cuentaAmiga1 + 
+"\n" + 
+cuentaAmiga2));
 
-let montoATransferir = parseInt(prompt("Ingrese el monto que desea transferir"));
-if(montoATransferir > saldoCuenta){
-  alert("Tu saldo es insuficiente para transferir ese monto");
-} else {
-  saldoCuenta -= montoATransferir;
+
+switch(cuentaSeleccionada){
+  case 1234567:
+  montoDineroATransferir();
+  break;
+  case 7654321:
+  montoDineroATransferir();
+  break;
+  default:
+  alert("La cuenta ingresada no pertenece a tus amigos");
+}
+actualizarSaldoEnPantalla();
 }
 
+function montoDineroATransferir(){
+  let montoATransferir = parseInt(prompt("Ingrese el monto que desea transferir"));
+  
+  if(montoATransferir > saldoCuenta){
+    alert("No posees el dinero necesario para realizar esta operacion");
+  } else {
+    saldoCuenta -= montoATransferir;
+  }
 }
+
 
 function iniciarSesion() {
 
