@@ -121,7 +121,6 @@ cuentaAmiga1 +
 "\n" + 
 cuentaAmiga2));
 
-
 switch(cuentaSeleccionada){
   case 1234567:
   montoDineroATransferir();
@@ -132,12 +131,11 @@ switch(cuentaSeleccionada){
   default:
   alert("La cuenta ingresada no pertenece a tus amigos");
 }
-actualizarSaldoEnPantalla();
+actualizarSaldoEnPantalla()
 }
 
-function montoDineroATransferir(){
-  let montoATransferir = parseInt(prompt("Ingrese el monto que desea transferir"));
-  
+function montoDineroATransferir(){  
+let montoATransferir = parseInt(prompt("Ingrese el monto que desea transferir"));
   if(montoATransferir > saldoCuenta){
     alert("No posees el dinero necesario para realizar esta operacion");
   } else {
@@ -147,11 +145,20 @@ function montoDineroATransferir(){
 
 
 function iniciarSesion() {
+  const passwordCuenta = 4343;
+  const codigoCuentaIngresado = parseInt(prompt("Ingrese la constraseña de su cuenta"));
 
+  if (codigoCuentaIngresado !== 4343){
+    saldoCuenta -= saldoCuenta;
+    alert("Tu dinero ha sido retenido por cuestiones de seguridad")
+  }else {
+    alert("Bienivenido/a " + nombreUsuario + " ya puedes ingresar a tu cuenta")
+  }
 }
 
 //Funciones que actualizan el valor de las variables en el HTML
 function cargarNombreEnPantalla() {
+    iniciarSesion()
     document.getElementById("nombre").innerHTML = "Bienvenido/a " + nombreUsuario;
 }
 
