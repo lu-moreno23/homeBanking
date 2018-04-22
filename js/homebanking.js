@@ -32,7 +32,7 @@ function cambiarLimiteDeExtraccion() {
   alert ("Tu nuevo límite de extracción es: " + nuevoLimiteExtraccion);
 }
 
-//Validacione para limites de extraccion
+//Validaciones para limites de extraccion
 function limiteExtraccionEsNaN(nuevoLimiteExtraccion){
   return (isNaN(nuevoLimiteExtraccion));
 }
@@ -160,6 +160,36 @@ function servicioAPagarEsNaN(servicioAPagarSeleccionado){
   return isNaN(servicioAPagarSeleccionado);
 }
 
+//Funcionalidad nueva: dar credito cuando no hay dinero para pagar servicio
+
+function otorgarPrestamo(servicioAPagarSeleccionado){
+  let totalPrestamo = 10000
+  let tasaDeInteresDecimal = 0.012;
+  let tasaDeInteresEntera = (tasaDeInteresDecimal * 100);
+  const confirmacionOtorgamientoDePrestamo = parseInt(prompt("Desea acceder a un prestamo por " + totalPrestamo + " con una tasa de interes del " + 
+  tasaDeInteresEntera + "\n" + 
+  "1 - Si" + "\n" + 
+  "2- No"))
+  
+  if (servicioAPagarEsNaN(confirmacionOtorgamientoDePrestamo)){
+    return alert("Solo puedas ingresar numeros");
+  } else if (prestamoEsNumeroNegativo(confirmacionOtorgamientoDePrestamo)){
+    return alert("Solo puedes elegir entre las opciones 1- Si o 2- No")
+  } else if (confirmacionOtorgamientoDePrestamo === 2){
+    alert("Gracias por operar con Homebanking")
+  } else{
+    saldoCuenta += totalPrestamo + (totalPrestamo * tasaDeInteresDecimal);
+  }
+  actualizarSaldoEnPantalla()
+}
+
+function prestamoEsNaN(confirmacionOtorgamientoDePrestamo){
+  return isNaN(confirmacionOtorgamientoDePrestamo);
+}
+
+function prestamoEsNumeroNegativo(confirmacionOtorgamientoDePrestamo){
+  return confirmacionOtorgamientoDePrestamo <= 0
+}
 
 function transferirDinero() {
 const cuentaAmiga1 = 1234567;
@@ -171,9 +201,10 @@ let cuentaSeleccionada= parseInt(prompt("Seleccione la cuenta a la que desea tra
 cuentaAmiga1 + 
 "\n" + 
 cuentaAmiga2));
-if (cuentaSeleccionada !== cuentaAmiga1 && cuentaSeleccionada !== cuentaAmiga2){
+
+if(cuentaSeleccionada !== cuentaAmiga1 && cuentaSeleccionada !== cuentaAmiga2){
   return alert("La cuenta ingresada no pertenece a tus amigos");
-}
+} 
 
 let montoATransferir = parseInt(prompt("Ingrese el monto que desea transferir"));
 if (montoATransferirEsNaN(montoATransferir)){
