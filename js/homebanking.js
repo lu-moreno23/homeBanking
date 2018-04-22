@@ -37,7 +37,7 @@ function extraerDinero() {
     alert("No hay saldo disponible en tu cuenta para extraer esa cantidad de dinero");
   } else if (noEntregaBilletesDeCien(saldoAExtraer)){
     alert("Solo puedes extraer billetes de 100");
-  }else {restarDineroACuenta(saldoAExtraer)
+  } else {restarDineroACuenta(saldoAExtraer);
   const saldoPosteriorAExtraccion = saldoCuenta;
   alert("Has extraído: " + cantidadExtraccion + "\n Saldo Anterior: " + saldoAnteriorAExtraccion + "\n Saldo Actual: " + saldoPosteriorAExtraccion);
   actualizarSaldoEnPantalla();
@@ -47,15 +47,15 @@ actualizarSaldoEnPantalla();
 
   //Funciones utilizadas en extraerDinero
 function limiteExtraccionNoEsValido(saldoAExtraer, limiteExtraccion) {
-  return saldoAExtraer > limiteExtraccion
+  return saldoAExtraer > limiteExtraccion;
 }
 
 function noHaySaldoDisponibleEnCuenta(saldoAExtraer,saldoCuenta){
-  return saldoAExtraer > saldoCuenta
+  return saldoAExtraer > saldoCuenta;
 }
 
 function noEntregaBilletesDeCien(saldoAExtraer){
-  return saldoAExtraer%100 != 0
+  return saldoAExtraer%100 != 0;
 }
   
 function depositarDinero() {
@@ -111,8 +111,8 @@ function ejecutarPagoDeServicio(servicioAPagarSeleccionado){
 
 
 function transferirDinero() {
-const cuentaAmiga1 = 1234567
-const cuentaAmiga2 = 7654321
+const cuentaAmiga1 = 1234567;
+const cuentaAmiga2 = 7654321;
 let cuentaSeleccionada= parseInt(prompt("Seleccione la cuenta a la que desea transferir" + 
 "\n" + 
 "Cuentas amigas:" + 
@@ -140,9 +140,9 @@ function iniciarSesion() {
 
   if (codigoCuentaIngresado !== 4343){
     saldoCuenta -= saldoCuenta;
-    alert("Tu dinero ha sido retenido por cuestiones de seguridad")
-  }else {
-    alert("Bienivenido/a " + nombreUsuario + " ya puedes ingresar a tu cuenta")
+    alert("Tu dinero ha sido retenido por cuestiones de seguridad");
+  }else { 
+    alert("Bienivenido/a " + nombreUsuario + " ya puedes ingresar a tu cuenta");
   }
 }
 
@@ -150,7 +150,7 @@ function iniciarSesion() {
 
 //Funciones que actualizan el valor de las variables en el HTML
 function cargarNombreEnPantalla() {
-    iniciarSesion()
+    iniciarSesion();
     document.getElementById("nombre").innerHTML = "Bienvenido/a " + nombreUsuario;
 }
 
