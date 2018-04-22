@@ -32,7 +32,7 @@ function cambiarLimiteDeExtraccion() {
   alert ("Tu nuevo límite de extracción es: " + nuevoLimiteExtraccion);
 }
 
-//Validaciones para limites de extraccion
+//Validaciones para límites de extracción
 function limiteExtraccionEsNaN(nuevoLimiteExtraccion){
   return (isNaN(nuevoLimiteExtraccion));
 }
@@ -47,11 +47,11 @@ function extraerDinero() {
   const cantidadExtraccion = prompt ("¿Cuánto desea extraer?");
   const saldoAExtraer = parseInt(cantidadExtraccion);
   if (extraerDineroEsNaN(cantidadExtraccion)){
-    alert("Solo puedes ingresar numeros")
+    alert("Solo puedes ingresar números")
   } else if (extraccionEsNegativa(cantidadExtraccion)){
     alert ("Solo puedes ingresar montos mayores a 0")
   } else if (limiteExtraccionNoEsValido(saldoAExtraer,limiteExtraccion)){
-    alert("La cantidad de dinero que deseas extraer es mayor a tu limite de extraccion");
+    alert("La cantidad de dinero que deseas extraer es mayor a tu límite de extracción");
   } else if (noHaySaldoDisponibleEnCuenta(saldoAExtraer,saldoCuenta)){
     alert("No hay saldo disponible en tu cuenta para extraer esa cantidad de dinero");
   } else if (noEntregaBilletesDeCien(saldoAExtraer)){
@@ -77,7 +77,7 @@ function noEntregaBilletesDeCien(saldoAExtraer){
   return saldoAExtraer%100 != 0;
 }
 
-//Validaciones para extraccion de dinero
+//Validaciones para extracción de dinero
 function extraerDineroEsNaN(cantidadExtraccion){
   return isNaN(cantidadExtraccion)
 }
@@ -92,7 +92,7 @@ function depositarDinero() {
   let cantidadDeposito = prompt("¿Cuánto desea depositar?");
   let saldoADepositar = parseInt(cantidadDeposito);
   if (depositarDineroEsNaN(saldoADepositar)){
-    return alert("Solo puedes ingresar numeros");
+    return alert("Solo puedes ingresar números");
   } else if (depositoEsNegativo(saldoADepositar)){
     return alert ("Solo puedes ingresar montos mayores a 0");
   } sumarDineroACuenta(saldoADepositar);
@@ -117,14 +117,14 @@ const telefono = 425;
 const luz = 210;
 const internet = 570;
 
-let servicioAPagarSeleccionado = parseInt(prompt("Ingrese el numero que corresponda con el servicio que queres pagar" + "\n" + 
+let servicioAPagarSeleccionado = parseInt(prompt("Ingrese el número que corresponda con el servicio que desea pagar" + "\n" + 
 "1- Agua" + "\n" + 
-"2- Telefono" + "\n" + 
+"2- Teléfono" + "\n" + 
 "3- Luz" + "\n" + 
 "4- Internet"));
 
 if (servicioAPagarEsNaN(servicioAPagarSeleccionado)){
-  return alert("Solo puedes ingresar numeros");
+  return alert("Solo puedes ingresar números");
 }
 
 switch(servicioAPagarSeleccionado){
@@ -146,7 +146,7 @@ switch(servicioAPagarSeleccionado){
 actualizarSaldoEnPantalla();
 }
 
-//Funcion para el pago de servicio
+//Función para el pago de servicio
 function ejecutarPagoDeServicio(servicioAPagarSeleccionado){
   if (servicioAPagarSeleccionado > saldoCuenta){
     alert("Tu saldo es insuficiente para pagar este servicio");
@@ -158,29 +158,6 @@ function ejecutarPagoDeServicio(servicioAPagarSeleccionado){
 
 function servicioAPagarEsNaN(servicioAPagarSeleccionado){
   return isNaN(servicioAPagarSeleccionado);
-}
-
-//Funcionalidad nueva: dar credito cuando no hay dinero para pagar servicio
-
-function otorgarPrestamo(servicioAPagarSeleccionado){
-  let totalPrestamo = 10000
-  let tasaDeInteresDecimal = 0.012;
-  let tasaDeInteresEntera = (tasaDeInteresDecimal * 100);
-  const confirmacionOtorgamientoDePrestamo = parseInt(prompt("Desea acceder a un prestamo por " + totalPrestamo + " con una tasa de interes del " + 
-  tasaDeInteresEntera + "\n" + 
-  "1 - Si" + "\n" + 
-  "2- No"))
-  
-  if (servicioAPagarEsNaN(confirmacionOtorgamientoDePrestamo)){
-    return alert("Solo puedas ingresar numeros");
-  } else if (prestamoEsNumeroNegativo(confirmacionOtorgamientoDePrestamo)){
-    return alert("Solo puedes elegir entre las opciones 1- Si o 2- No")
-  } else if (confirmacionOtorgamientoDePrestamo === 2){
-    alert("Gracias por operar con Homebanking")
-  } else{
-    saldoCuenta += totalPrestamo + (totalPrestamo * tasaDeInteresDecimal);
-  }
-  actualizarSaldoEnPantalla()
 }
 
 function prestamoEsNaN(confirmacionOtorgamientoDePrestamo){
@@ -208,7 +185,7 @@ if(cuentaSeleccionada !== cuentaAmiga1 && cuentaSeleccionada !== cuentaAmiga2){
 
 let montoATransferir = parseInt(prompt("Ingrese el monto que desea transferir"));
 if (montoATransferirEsNaN(montoATransferir)){
-  return alert("Solo puedes ingresar numeros");
+  return alert("Solo puedes ingresar números");
 } else if (montoATransferirEsNegativo(montoATransferir)){
   return alert("Solo puedes ingresar montos mayores a 0")
 } else if (montoATransferir > saldoCuenta) {
@@ -227,6 +204,29 @@ function montoATransferirEsNaN(montoATransferir){
 
 function montoATransferirEsNegativo(montoATransferir){
   return (montoATransferir <= 0);
+}
+
+//Funcionalidad nueva: otorgamiento de préstamo
+
+function otorgarPrestamo(servicioAPagarSeleccionado){
+  let totalPrestamo = 10000
+  let tasaDeInteresDecimal = 0.012;
+  let tasaDeInteresEntera = (tasaDeInteresDecimal * 100);
+  const confirmacionOtorgamientoDePrestamo = parseInt(prompt("Desea acceder a un préstamo por " + totalPrestamo + " con una tasa de interés del " + 
+  tasaDeInteresEntera + "\n" + 
+  "1 - Si" + "\n" + 
+  "2- No"))
+  
+  if (servicioAPagarEsNaN(confirmacionOtorgamientoDePrestamo)){
+    return alert("Solo puedas ingresar números");
+  } else if (prestamoEsNumeroNegativo(confirmacionOtorgamientoDePrestamo)){
+    return alert("Solo puedes elegir entre las opciones 1- Si o 2- No")
+  } else if (confirmacionOtorgamientoDePrestamo === 2){
+    alert("Gracias por operar con Homebanking")
+  } else{
+    saldoCuenta += totalPrestamo + (totalPrestamo * tasaDeInteresDecimal);
+  }
+  actualizarSaldoEnPantalla()
 }
 
 function iniciarSesion() {
