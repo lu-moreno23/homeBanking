@@ -39,7 +39,9 @@ function extraerDinero() {
   const saldoAnteriorAExtraccion = saldoCuenta;
   const cantidadExtraccion = prompt ("¿Cuánto desea extraer?");
   const saldoAExtraer = parseInt(cantidadExtraccion);
-  if (limiteExtraccionNoEsValido(saldoAExtraer,limiteExtraccion)){
+  if (extraerDineroEsNaN(cantidadExtraccion)){
+    return alert("Solo puedes ingresar numeros")
+  }else if (limiteExtraccionNoEsValido(saldoAExtraer,limiteExtraccion)){
     alert("La cantidad de dinero que deseas extraer es mayor a tu limite de extraccion");
   } else if (noHaySaldoDisponibleEnCuenta(saldoAExtraer,saldoCuenta)){
     alert("No hay saldo disponible en tu cuenta para extraer esa cantidad de dinero");
@@ -64,6 +66,10 @@ function noHaySaldoDisponibleEnCuenta(saldoAExtraer,saldoCuenta){
 
 function noEntregaBilletesDeCien(saldoAExtraer){
   return saldoAExtraer%100 != 0;
+}
+
+function extraerDineroEsNaN(cantidadExtraccion){
+  return isNaN(cantidadExtraccion)
 }
   
 function depositarDinero() {
