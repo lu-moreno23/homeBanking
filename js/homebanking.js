@@ -76,10 +76,16 @@ function depositarDinero() {
   let saldoAnteriorAlDeposito = saldoCuenta;
   let cantidadDeposito = prompt("¿Cuánto desea depositar?");
   let saldoADepositar = parseInt(cantidadDeposito);
-  sumarDineroACuenta(saldoADepositar);
+  if (depositarDineroEsNaN(saldoADepositar)){
+    return alert("Solo puedes ingresar numeros");
+  } sumarDineroACuenta(saldoADepositar);
   let saldoPosteriorAlDeposito = saldoCuenta;
   actualizarSaldoEnPantalla();
   alert("Has depositado: " + cantidadDeposito + "\n Saldo Anterior: " + saldoAnteriorAlDeposito + "\n Saldo Actual: " + saldoPosteriorAlDeposito);
+}
+
+function depositarDineroEsNaN(saldoADepositar){
+  return isNaN(saldoADepositar);
 }
 
 function pagarServicio() {
@@ -94,6 +100,10 @@ let servicioAPagarSeleccionado = parseInt(prompt("Ingrese el numero que correspo
 "2- Telefono" + "\n" + 
 "3- Luz" + "\n" + 
 "4- Internet"));
+
+if (servicioAPagarEsNaN(servicioAPagarSeleccionado)){
+  return alert("Solo puedes ingresar numeros");
+}
 
 switch(servicioAPagarSeleccionado){
   case 1:
@@ -122,6 +132,10 @@ function ejecutarPagoDeServicio(servicioAPagarSeleccionado){
     saldoCuenta -= servicioAPagarSeleccionado;
     alert("Tu pago fue realizado con éxito");
   }
+}
+
+function servicioAPagarEsNaN(servicioAPagarSeleccionado){
+  return isNaN(servicioAPagarSeleccionado);
 }
 
 
