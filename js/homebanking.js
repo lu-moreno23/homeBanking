@@ -37,7 +37,7 @@ function extraerDinero() {
     alert("No hay saldo disponible en tu cuenta para extraer esa cantidad de dinero");
   } else if (noEntregaBilletesDeCien(saldoAExtraer)){
     alert("Solo puedes extraer billetes de 100");
-  } else {restarDineroACuenta(saldoAExtraer)
+  }else {restarDineroACuenta(saldoAExtraer)
   const saldoPosteriorAExtraccion = saldoCuenta;
   alert("Has extraído: " + cantidadExtraccion + "\n Saldo Anterior: " + saldoAnteriorAExtraccion + "\n Saldo Actual: " + saldoPosteriorAExtraccion);
   actualizarSaldoEnPantalla();
@@ -57,7 +57,7 @@ function noHaySaldoDisponibleEnCuenta(saldoAExtraer,saldoCuenta){
 function noEntregaBilletesDeCien(saldoAExtraer){
   return saldoAExtraer%100 != 0
 }
-
+  
 function depositarDinero() {
   let saldoAnteriorAlDeposito = saldoCuenta;
   let cantidadDeposito = prompt("¿Cuánto desea depositar?");
@@ -120,29 +120,19 @@ let cuentaSeleccionada= parseInt(prompt("Seleccione la cuenta a la que desea tra
 cuentaAmiga1 + 
 "\n" + 
 cuentaAmiga2));
+if (cuentaSeleccionada !== cuentaAmiga1 && cuentaSeleccionada !== cuentaAmiga2){
+  return alert("La cuenta ingresada no pertenece a tus amigos");
+}
 
-switch(cuentaSeleccionada){
-  case 1234567:
-  montoDineroATransferir();
-  break;
-  case 7654321:
-  montoDineroATransferir();
-  break;
-  default:
-  alert("La cuenta ingresada no pertenece a tus amigos");
+let montoATransferir = parseInt(prompt("Ingrese el monto que desea transferir"));
+if (montoATransferir > saldoCuenta) {
+  alert("No posees la suficiente cantidad de dinero para la transferencia");
+} else {
+  restarDineroACuenta(montoATransferir)
+  alert("Se ha transferido: " + montoATransferir + "\n" + "Cuenta destino: " + cuentaSeleccionada);
 }
 actualizarSaldoEnPantalla()
 }
-
-function montoDineroATransferir(){  
-let montoATransferir = parseInt(prompt("Ingrese el monto que desea transferir"));
-  if(montoATransferir > saldoCuenta){
-    alert("No posees el dinero necesario para realizar esta operacion");
-  } else {
-    saldoCuenta -= montoATransferir;
-  }
-}
-
 
 function iniciarSesion() {
   const passwordCuenta = 4343;
@@ -155,6 +145,8 @@ function iniciarSesion() {
     alert("Bienivenido/a " + nombreUsuario + " ya puedes ingresar a tu cuenta")
   }
 }
+
+
 
 //Funciones que actualizan el valor de las variables en el HTML
 function cargarNombreEnPantalla() {
