@@ -100,6 +100,7 @@ switch(servicioAPagarSeleccionado){
 actualizarSaldoEnPantalla();
 }
 
+//Funcion para el pago de servicio
 function ejecutarPagoDeServicio(servicioAPagarSeleccionado){
   if (servicioAPagarSeleccionado > saldoCuenta){
     alert("Tu saldo es insuficiente para pagar este servicio");
@@ -125,13 +126,19 @@ if (cuentaSeleccionada !== cuentaAmiga1 && cuentaSeleccionada !== cuentaAmiga2){
 }
 
 let montoATransferir = parseInt(prompt("Ingrese el monto que desea transferir"));
-if (montoATransferir > saldoCuenta) {
+if (montoATransferirEsNaN(montoATransferir)){
+  return alert("Solo puedes ingresar numeros");
+} else if (montoATransferir > saldoCuenta) {
   alert("No posees la suficiente cantidad de dinero para la transferencia");
 } else {
   restarDineroACuenta(montoATransferir)
   alert("Se ha transferido: " + montoATransferir + "\n" + "Cuenta destino: " + cuentaSeleccionada);
 }
 actualizarSaldoEnPantalla()
+}
+
+function montoATransferirEsNaN(montoATransferir){
+  return isNaN(montoATransferir)
 }
 
 function iniciarSesion() {
