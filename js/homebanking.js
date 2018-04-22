@@ -32,6 +32,7 @@ function cambiarLimiteDeExtraccion() {
   alert ("Tu nuevo límite de extracción es: " + nuevoLimiteExtraccion);
 }
 
+//Validacione para limites de extraccion
 function limiteExtraccionEsNaN(nuevoLimiteExtraccion){
   return (isNaN(nuevoLimiteExtraccion));
 }
@@ -46,8 +47,10 @@ function extraerDinero() {
   const cantidadExtraccion = prompt ("¿Cuánto desea extraer?");
   const saldoAExtraer = parseInt(cantidadExtraccion);
   if (extraerDineroEsNaN(cantidadExtraccion)){
-    return alert("Solo puedes ingresar numeros")
-  }else if (limiteExtraccionNoEsValido(saldoAExtraer,limiteExtraccion)){
+    alert("Solo puedes ingresar numeros")
+  } else if (extraccionEsNegativa(cantidadExtraccion)){
+    alert ("Solo puedes ingresar montos mayores a 0")
+  } else if (limiteExtraccionNoEsValido(saldoAExtraer,limiteExtraccion)){
     alert("La cantidad de dinero que deseas extraer es mayor a tu limite de extraccion");
   } else if (noHaySaldoDisponibleEnCuenta(saldoAExtraer,saldoCuenta)){
     alert("No hay saldo disponible en tu cuenta para extraer esa cantidad de dinero");
@@ -74,9 +77,15 @@ function noEntregaBilletesDeCien(saldoAExtraer){
   return saldoAExtraer%100 != 0;
 }
 
+//Validaciones para extraccion de dinero
 function extraerDineroEsNaN(cantidadExtraccion){
   return isNaN(cantidadExtraccion)
 }
+
+function extraccionEsNegativa(cantidadExtraccion){
+  return (cantidadExtraccion <= 0);
+}
+
   
 function depositarDinero() {
   let saldoAnteriorAlDeposito = saldoCuenta;
@@ -84,14 +93,21 @@ function depositarDinero() {
   let saldoADepositar = parseInt(cantidadDeposito);
   if (depositarDineroEsNaN(saldoADepositar)){
     return alert("Solo puedes ingresar numeros");
+  } else if (depositoEsNegativo(saldoADepositar)){
+    return alert ("Solo puedes ingresar montos mayores a 0");
   } sumarDineroACuenta(saldoADepositar);
   let saldoPosteriorAlDeposito = saldoCuenta;
   actualizarSaldoEnPantalla();
   alert("Has depositado: " + cantidadDeposito + "\n Saldo Anterior: " + saldoAnteriorAlDeposito + "\n Saldo Actual: " + saldoPosteriorAlDeposito);
 }
 
+//Validaciones para deposito de dinero
 function depositarDineroEsNaN(saldoADepositar){
   return isNaN(saldoADepositar);
+}
+
+function depositoEsNegativo(saldoADepositar){
+  return (saldoADepositar <= 0);
 }
 
 function pagarServicio() {
@@ -162,6 +178,8 @@ if (cuentaSeleccionada !== cuentaAmiga1 && cuentaSeleccionada !== cuentaAmiga2){
 let montoATransferir = parseInt(prompt("Ingrese el monto que desea transferir"));
 if (montoATransferirEsNaN(montoATransferir)){
   return alert("Solo puedes ingresar numeros");
+} else if (montoATransferirEsNegativo(montoATransferir)){
+  return alert("Solo puedes ingresar montos mayores a 0")
 } else if (montoATransferir > saldoCuenta) {
   alert("No posees la suficiente cantidad de dinero para la transferencia");
 } else {
@@ -171,8 +189,13 @@ if (montoATransferirEsNaN(montoATransferir)){
 actualizarSaldoEnPantalla()
 }
 
+//Validaciones transferencia de dinero
 function montoATransferirEsNaN(montoATransferir){
   return isNaN(montoATransferir)
+}
+
+function montoATransferirEsNegativo(montoATransferir){
+  return (montoATransferir <= 0);
 }
 
 function iniciarSesion() {
