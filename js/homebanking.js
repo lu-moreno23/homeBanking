@@ -23,6 +23,8 @@ function cambiarLimiteDeExtraccion() {
   let nuevoLimiteExtraccion = parseInt (ingresoNuevoLimiteExtraccion);
   if (limiteExtraccionEsNaN(nuevoLimiteExtraccion)){
     return alert("Solo puedes ingresar numeros");
+  } else if (limiteExtraccionEsNegativo(nuevoLimiteExtraccion)){
+    return alert ("Solo puedes ingresar montos mayores a 0")
   } else {
     limiteExtraccion = nuevoLimiteExtraccion;
   }
@@ -31,7 +33,11 @@ function cambiarLimiteDeExtraccion() {
 }
 
 function limiteExtraccionEsNaN(nuevoLimiteExtraccion){
-  return isNaN(nuevoLimiteExtraccion)
+  return (isNaN(nuevoLimiteExtraccion));
+}
+
+function limiteExtraccionEsNegativo(nuevoLimiteExtraccion){
+  return (nuevoLimiteExtraccion <= 0);
 }
 
 
