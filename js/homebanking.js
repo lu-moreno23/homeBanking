@@ -1,5 +1,5 @@
 //Declaración de variables
-const nombreUsuario = 'Lu Moreno';
+const nombreUsuario = "Lu Moreno";
 let saldoCuenta = 1000;
 let limiteExtraccion = 3000;
 
@@ -24,7 +24,7 @@ function cambiarLimiteDeExtraccion() {
   if (limiteExtraccionEsNaN(nuevoLimiteExtraccion)){
     return alert("Solo puedes ingresar numeros");
   } else if (limiteExtraccionEsNegativo(nuevoLimiteExtraccion)){
-    return alert ("Solo puedes ingresar montos mayores a 0")
+    return alert ("Solo puedes ingresar montos mayores a 0");
   } else {
     limiteExtraccion = nuevoLimiteExtraccion;
   }
@@ -47,9 +47,9 @@ function extraerDinero() {
   const cantidadExtraccion = prompt ("¿Cuánto desea extraer?");
   const saldoAExtraer = parseInt(cantidadExtraccion);
   if (extraerDineroEsNaN(cantidadExtraccion)){
-    alert("Solo puedes ingresar números")
+    alert("Solo puedes ingresar números");
   } else if (extraccionEsNegativa(cantidadExtraccion)){
-    alert ("Solo puedes ingresar montos mayores a 0")
+    alert ("Solo puedes ingresar montos mayores a 0");
   } else if (limiteExtraccionNoEsValido(saldoAExtraer,limiteExtraccion)){
     alert("La cantidad de dinero que deseas extraer es mayor a tu límite de extracción");
   } else if (noHaySaldoDisponibleEnCuenta(saldoAExtraer,saldoCuenta)){
@@ -79,7 +79,7 @@ function noEntregaBilletesDeCien(saldoAExtraer){
 
 //Validaciones para extracción de dinero
 function extraerDineroEsNaN(cantidadExtraccion){
-  return isNaN(cantidadExtraccion)
+  return isNaN(cantidadExtraccion);
 }
 
 function extraccionEsNegativa(cantidadExtraccion){
@@ -165,7 +165,7 @@ function prestamoEsNaN(confirmacionOtorgamientoDePrestamo){
 }
 
 function prestamoEsNumeroNegativo(confirmacionOtorgamientoDePrestamo){
-  return confirmacionOtorgamientoDePrestamo <= 0
+  return confirmacionOtorgamientoDePrestamo <= 0;
 }
 
 function transferirDinero() {
@@ -187,19 +187,19 @@ let montoATransferir = parseInt(prompt("Ingrese el monto que desea transferir"))
 if (montoATransferirEsNaN(montoATransferir)){
   return alert("Solo puedes ingresar números");
 } else if (montoATransferirEsNegativo(montoATransferir)){
-  return alert("Solo puedes ingresar montos mayores a 0")
+  return alert("Solo puedes ingresar montos mayores a 0");
 } else if (montoATransferir > saldoCuenta) {
   alert("No posees la suficiente cantidad de dinero para la transferencia");
 } else {
-  restarDineroACuenta(montoATransferir)
+  restarDineroACuenta(montoATransferir);
   alert("Se ha transferido: " + montoATransferir + "\n" + "Cuenta destino: " + cuentaSeleccionada);
 }
-actualizarSaldoEnPantalla()
+actualizarSaldoEnPantalla();
 }
 
 //Validaciones transferencia de dinero
 function montoATransferirEsNaN(montoATransferir){
-  return isNaN(montoATransferir)
+  return isNaN(montoATransferir);
 }
 
 function montoATransferirEsNegativo(montoATransferir){
@@ -209,24 +209,24 @@ function montoATransferirEsNegativo(montoATransferir){
 //Funcionalidad nueva: otorgamiento de préstamo
 
 function otorgarPrestamo(servicioAPagarSeleccionado){
-  let totalPrestamo = 10000
+  let totalPrestamo = 10000;
   let tasaDeInteresDecimal = 0.012;
   let tasaDeInteresEntera = (tasaDeInteresDecimal * 100);
   const confirmacionOtorgamientoDePrestamo = parseInt(prompt("Desea acceder a un préstamo por " + totalPrestamo + " con una tasa de interés del " + 
   tasaDeInteresEntera + "\n" + 
   "1 - Si" + "\n" + 
-  "2- No"))
+  "2- No"));
   
   if (servicioAPagarEsNaN(confirmacionOtorgamientoDePrestamo)){
     return alert("Solo puedas ingresar números");
   } else if (prestamoEsNumeroNegativo(confirmacionOtorgamientoDePrestamo)){
-    return alert("Solo puedes elegir entre las opciones 1- Si o 2- No")
+    return alert("Solo puedes elegir entre las opciones 1- Si o 2- No");
   } else if (confirmacionOtorgamientoDePrestamo === 2){
-    alert("Gracias por operar con Homebanking")
+    alert("Gracias por operar con Homebanking");
   } else{
     saldoCuenta += totalPrestamo + (totalPrestamo * tasaDeInteresDecimal);
   }
-  actualizarSaldoEnPantalla()
+  actualizarSaldoEnPantalla();
 }
 
 function iniciarSesion() {
