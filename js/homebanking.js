@@ -47,18 +47,18 @@ function extraerDinero() {
   const saldoAnteriorAExtraccion = saldoCuenta;
   const cantidadExtraccion = prompt("¿Cuánto desea extraer?");
   const saldoAExtraer = parseInt(cantidadExtraccion);
-  if (extraerDineroNoEsNumero(cantidadExtraccion)) {
-    alert("Solo puedes ingresar números");
-  } else if (extraccionEsNegativaOCero(cantidadExtraccion)) {
-    alert("Solo puedes ingresar montos mayores a 0");
-  } else if (limiteExtraccionNoEsValido(saldoAExtraer, limiteExtraccion)) {
+  if (extraccionDineroMayorACeroYEsNumerica(cantidadExtraccion)){
+    return alert("Solo puedes ingresar numeros");
+  }  
+  if (limiteExtraccionNoEsValido(saldoAExtraer, limiteExtraccion)) {
     alert("La cantidad de dinero que deseas extraer es mayor a tu límite de extracción");
-  } else if (noHaySaldoDisponibleEnCuenta(saldoAExtraer, saldoCuenta)) {
+  } 
+  if (noHaySaldoDisponibleEnCuenta(saldoAExtraer, saldoCuenta)) {
     alert("No hay saldo disponible en tu cuenta para extraer esa cantidad de dinero");
-  } else if (noEntregaBilletesDeCien(saldoAExtraer)) {
+  } 
+  if (noEntregaBilletesDeCien(saldoAExtraer)) {
     alert("Solo puedes extraer billetes de 100");
-  } else {
-    restarDineroACuenta(saldoAExtraer);
+  restarDineroACuenta(saldoAExtraer);
     const saldoPosteriorAExtraccion = saldoCuenta;
     alert("Has extraído: " + cantidadExtraccion + "\n Saldo Anterior: " + saldoAnteriorAExtraccion + "\n Saldo Actual: " + saldoPosteriorAExtraccion);
     actualizarSaldoEnPantalla();
@@ -67,6 +67,7 @@ function extraerDinero() {
 }
 
 //Funciones utilizadas en extraerDinero
+
 function limiteExtraccionNoEsValido(saldoAExtraer, limiteExtraccion) {
   return saldoAExtraer > limiteExtraccion;
 }
@@ -79,13 +80,10 @@ function noEntregaBilletesDeCien(saldoAExtraer) {
   return saldoAExtraer % 100 != 0;
 }
 
-//Validaciones para extracción de dinero
-function extraerDineroNoEsNumero(cantidadExtraccion) {
-  return isNaN(cantidadExtraccion);
-}
+//Funciones para verificar que los montos de extraerDinero sean numericos y mayores a 0
 
-function extraccionEsNegativaOCero(cantidadExtraccion) {
-  return (cantidadExtraccion <= 0);
+function extraccionDineroMayorACeroYEsNumerica(cantidadExtraccion){
+  return isNaN(cantidadExtraccion)|| cantidadExtraccion <= 0;
 }
 
 
@@ -179,9 +177,9 @@ function transferirDinero() {
   }
 
   let montoATransferir = parseInt(prompt("Ingrese el monto que desea transferir"));
-  if (montoATransferirEsNaN(montoATransferir)) {
+  if (montoATransferirNoEsNumero(montoATransferir)) {
     return alert("Solo puedes ingresar números");
-  } else if (montoATransferirEsNegativo(montoATransferir)) {
+  } else if (montoATransferirEsNegativoOCero(montoATransferir)) {
     return alert("Solo puedes ingresar montos mayores a 0");
   } else if (montoATransferir > saldoCuenta) {
     alert("No posees la suficiente cantidad de dinero para la transferencia");
@@ -193,11 +191,11 @@ function transferirDinero() {
 }
 
 //Validaciones transferencia de dinero
-function montoATransferirEsNaN(montoATransferir) {
+function montoATransferirNoEsNumero(montoATransferir) {
   return isNaN(montoATransferir);
 }
 
-function montoATransferirEsNegativo(montoATransferir) {
+function montoATransferirEsNegativoOCero(montoATransferir) {
   return (montoATransferir <= 0);
 }
 
@@ -212,9 +210,9 @@ function otorgarPrestamo() {
     "1 - Si" + "\n" +
     "2- No"));
 
-  if (prestamoEsNaN(confirmacionOtorgamientoDePrestamo)) {
+  if (prestamoNoEsNumero(confirmacionOtorgamientoDePrestamo)) {
     return alert("Solo puedas ingresar números");
-  } else if (prestamoEsNumeroNegativo(confirmacionOtorgamientoDePrestamo)) {
+  } else if (prestamoEsNumeroNegativoOCero(confirmacionOtorgamientoDePrestamo)) {
     return alert("Solo puedes elegir entre las opciones 1- Si o 2- No");
   } else if (confirmacionOtorgamientoDePrestamo === 2) {
     alert("Gracias por operar con Homebanking");
@@ -225,11 +223,11 @@ function otorgarPrestamo() {
 }
 
 //Validaciones prestamo
-function prestamoEsNaN(confirmacionOtorgamientoDePrestamo) {
+function prestamoNoEsNumero(confirmacionOtorgamientoDePrestamo) {
   return isNaN(confirmacionOtorgamientoDePrestamo);
 }
 
-function prestamoEsNumeroNegativo(confirmacionOtorgamientoDePrestamo) {
+function prestamoEsNumeroNegativoOCero(confirmacionOtorgamientoDePrestamo) {
   return confirmacionOtorgamientoDePrestamo <= 0;
 }
 
