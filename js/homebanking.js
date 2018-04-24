@@ -19,6 +19,7 @@ function restarDineroACuenta(cantidadDinero) {
 
 //Funciones que tenes que completar
 function cambiarLimiteDeExtraccion() {
+  // cambiar estos 2 let por const
   let ingresoNuevoLimiteExtraccion = prompt("Ingresar nuevo límite de extracción");
   let nuevoLimiteExtraccion = parseInt(ingresoNuevoLimiteExtraccion);
   if (limiteExtraccionEsNaN(nuevoLimiteExtraccion)) {
@@ -34,11 +35,12 @@ function cambiarLimiteDeExtraccion() {
 
 //Validaciones para límites de extracción
 function limiteExtraccionEsNaN(nuevoLimiteExtraccion) {
-  return (isNaN(nuevoLimiteExtraccion));
+  return isNaN(nuevoLimiteExtraccion);
 }
 
+// si acepta valor cero,cambiarle el nombre a la funcion
 function limiteExtraccionEsNegativo(nuevoLimiteExtraccion) {
-  return (nuevoLimiteExtraccion <= 0);
+  return nuevoLimiteExtraccion <= 0;
 }
 
 
