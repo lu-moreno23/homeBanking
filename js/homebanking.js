@@ -19,12 +19,11 @@ function restarDineroACuenta(cantidadDinero) {
 
 //Funciones que tenes que completar
 function cambiarLimiteDeExtraccion() {
-  // cambiar estos 2 let por const
-  let ingresoNuevoLimiteExtraccion = prompt("Ingresar nuevo límite de extracción");
-  let nuevoLimiteExtraccion = parseInt(ingresoNuevoLimiteExtraccion);
-  if (limiteExtraccionEsNaN(nuevoLimiteExtraccion)) {
+  const ingresoNuevoLimiteExtraccion = prompt("Ingresar nuevo límite de extracción");
+  const nuevoLimiteExtraccion = parseInt(ingresoNuevoLimiteExtraccion);
+  if (limiteExtraccionNoEsNumero(nuevoLimiteExtraccion)) {
     return alert("Solo puedes ingresar numeros");
-  } else if (limiteExtraccionEsNegativo(nuevoLimiteExtraccion)) {
+  } else if (limiteExtraccionEsNegativoOCero(nuevoLimiteExtraccion)) {
     return alert("Solo puedes ingresar montos mayores a 0");
   } else {
     limiteExtraccion = nuevoLimiteExtraccion;
@@ -34,12 +33,12 @@ function cambiarLimiteDeExtraccion() {
 }
 
 //Validaciones para límites de extracción
-function limiteExtraccionEsNaN(nuevoLimiteExtraccion) {
+function limiteExtraccionNoEsNumero(nuevoLimiteExtraccion) {
   return isNaN(nuevoLimiteExtraccion);
 }
 
 // si acepta valor cero,cambiarle el nombre a la funcion
-function limiteExtraccionEsNegativo(nuevoLimiteExtraccion) {
+function limiteExtraccionEsNegativoOCero(nuevoLimiteExtraccion) {
   return nuevoLimiteExtraccion <= 0;
 }
 
@@ -48,9 +47,9 @@ function extraerDinero() {
   const saldoAnteriorAExtraccion = saldoCuenta;
   const cantidadExtraccion = prompt("¿Cuánto desea extraer?");
   const saldoAExtraer = parseInt(cantidadExtraccion);
-  if (extraerDineroEsNaN(cantidadExtraccion)) {
+  if (extraerDineroNoEsNumero(cantidadExtraccion)) {
     alert("Solo puedes ingresar números");
-  } else if (extraccionEsNegativa(cantidadExtraccion)) {
+  } else if (extraccionEsNegativaOCero(cantidadExtraccion)) {
     alert("Solo puedes ingresar montos mayores a 0");
   } else if (limiteExtraccionNoEsValido(saldoAExtraer, limiteExtraccion)) {
     alert("La cantidad de dinero que deseas extraer es mayor a tu límite de extracción");
@@ -81,11 +80,11 @@ function noEntregaBilletesDeCien(saldoAExtraer) {
 }
 
 //Validaciones para extracción de dinero
-function extraerDineroEsNaN(cantidadExtraccion) {
+function extraerDineroNoEsNumero(cantidadExtraccion) {
   return isNaN(cantidadExtraccion);
 }
 
-function extraccionEsNegativa(cantidadExtraccion) {
+function extraccionEsNegativaOCero(cantidadExtraccion) {
   return (cantidadExtraccion <= 0);
 }
 
