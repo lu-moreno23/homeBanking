@@ -1,5 +1,5 @@
 //Declaración de variables
-const nombreUsuario = "Lu Moreno";
+const nombreUsuario = `Lu Moreno`;
 let saldoCuenta = 1000;
 let limiteExtraccion = 3000;
 
@@ -19,17 +19,17 @@ function restarDineroACuenta(cantidadDinero) {
 
 //Funciones que tenes que completar
 function cambiarLimiteDeExtraccion() {
-  const ingresoNuevoLimiteExtraccion = prompt("Ingresar nuevo límite de extracción");
+  const ingresoNuevoLimiteExtraccion = prompt(`Ingresar nuevo límite de extracción`);
   const nuevoLimiteExtraccion = parseInt(ingresoNuevoLimiteExtraccion);
   if (limiteExtraccionNoEsNumero(nuevoLimiteExtraccion)) {
-    return alert("Solo puedes ingresar numeros");
+    return alert(`Solo puedes ingresar numeros`);
   } else if (limiteExtraccionEsNegativoOCero(nuevoLimiteExtraccion)) {
-    return alert("Solo puedes ingresar montos mayores a 0");
+    return alert(`Solo puedes ingresar montos mayores a 0`);
   } else {
     limiteExtraccion = nuevoLimiteExtraccion;
   }
   actualizarLimiteEnPantalla();
-  alert("Tu nuevo límite de extracción es: " + nuevoLimiteExtraccion);
+  alert(`Tu nuevo límite de extracción es: ${nuevoLimiteExtraccion}`);
 }
 
 //Validaciones para límites de extracción
@@ -45,24 +45,25 @@ function limiteExtraccionEsNegativoOCero(nuevoLimiteExtraccion) {
 
 function extraerDinero() {
   const saldoAnteriorAExtraccion = saldoCuenta;
-  const cantidadExtraccion = prompt("¿Cuánto desea extraer?");
+  const cantidadExtraccion = prompt(`¿Cuánto desea extraer?`);
   const saldoAExtraer = parseInt(cantidadExtraccion);
-  if (extraccionDineroMayorACeroYEsNumerica(cantidadExtraccion)){
-    return alert("Solo puedes ingresar numeros");
-  }  
-  if (limiteExtraccionNoEsValido(saldoAExtraer, limiteExtraccion)) {
-    alert("La cantidad de dinero que deseas extraer es mayor a tu límite de extracción");
-  } 
-  if (noHaySaldoDisponibleEnCuenta(saldoAExtraer, saldoCuenta)) {
-    alert("No hay saldo disponible en tu cuenta para extraer esa cantidad de dinero");
-  } 
-  if (noEntregaBilletesDeCien(saldoAExtraer)) {
-    alert("Solo puedes extraer billetes de 100");
-  restarDineroACuenta(saldoAExtraer);
-    const saldoPosteriorAExtraccion = saldoCuenta;
-    alert("Has extraído: " + cantidadExtraccion + "\n Saldo Anterior: " + saldoAnteriorAExtraccion + "\n Saldo Actual: " + saldoPosteriorAExtraccion);
-    actualizarSaldoEnPantalla();
+  if (extraccionDineroMayorACeroYEsNumerica(cantidadExtraccion)) {
+    return alert(`Solo puedes ingresar numeros`);
   }
+  if (limiteExtraccionNoEsValido(saldoAExtraer, limiteExtraccion)) {
+    alert(`La cantidad de dinero que deseas extraer es mayor a tu límite de extracción`);
+  }
+  if (noHaySaldoDisponibleEnCuenta(saldoAExtraer, saldoCuenta)) {
+    alert(`No hay saldo disponible en tu cuenta para extraer esa cantidad de dinero`);
+  }
+  if (noEntregaBilletesDeCien(saldoAExtraer)) {
+    alert(`Solo puedes extraer billetes de 100`);
+  }
+  restarDineroACuenta(saldoAExtraer);
+  const saldoPosteriorAExtraccion = saldoCuenta;
+  alert(`Has extraído: ${cantidadExtraccion}
+     Saldo Anterior: ${saldoAnteriorAExtraccion}
+     Saldo Actual: ${saldoPosteriorAExtraccion}`);
   actualizarSaldoEnPantalla();
 }
 
@@ -82,24 +83,26 @@ function noEntregaBilletesDeCien(saldoAExtraer) {
 
 //Funciones para verificar que los montos de extraerDinero sean numericos y mayores a 0
 
-function extraccionDineroMayorACeroYEsNumerica(cantidadExtraccion){
-  return isNaN(cantidadExtraccion)|| cantidadExtraccion <= 0;
+function extraccionDineroMayorACeroYEsNumerica(cantidadExtraccion) {
+  return isNaN(cantidadExtraccion) || cantidadExtraccion <= 0;
 }
 
 
 function depositarDinero() {
   let saldoAnteriorAlDeposito = saldoCuenta;
-  let cantidadDeposito = prompt("¿Cuánto desea depositar?");
+  let cantidadDeposito = prompt(`¿Cuánto desea depositar?`);
   let saldoADepositar = parseInt(cantidadDeposito);
   if (depositarDineroNoEsNumero(saldoADepositar)) {
-    return alert("Solo puedes ingresar números");
+    return alert(`Solo puedes ingresar números`);
   } else if (depositoEsNegativoOCero(saldoADepositar)) {
-    return alert("Solo puedes ingresar montos mayores a 0");
+    return alert(`Solo puedes ingresar montos mayores a 0`);
   }
   sumarDineroACuenta(saldoADepositar);
   let saldoPosteriorAlDeposito = saldoCuenta;
   actualizarSaldoEnPantalla();
-  alert("Has depositado: " + cantidadDeposito + "\n Saldo Anterior: " + saldoAnteriorAlDeposito + "\n Saldo Actual: " + saldoPosteriorAlDeposito);
+  alert(`Has depositado: ${cantidadDeposito}
+  Saldo Anterior: ${saldoAnteriorAlDeposito}
+  Saldo Actual: ${saldoPosteriorAlDeposito}`);
 }
 
 //Validaciones para deposito de dinero
@@ -118,14 +121,14 @@ function pagarServicio() {
   const luz = 210;
   const internet = 570;
 
-  let servicioAPagarSeleccionado = parseInt(prompt("Ingrese el número que corresponda con el servicio que desea pagar" + "\n" +
-    "1- Agua" + "\n" +
-    "2- Teléfono" + "\n" +
-    "3- Luz" + "\n" +
-    "4- Internet"));
+  let servicioAPagarSeleccionado = parseInt(prompt(`Ingrese el número que corresponda con el servicio que desea pagar
+    1- Agua
+    2- Teléfono
+    3- Luz
+    4- Internet`));
 
   if (servicioAPagarNoEsNumero(servicioAPagarSeleccionado)) {
-    return alert("Solo puedes ingresar números");
+    return alert(`Solo puedes ingresar números`);
   }
 
   switch (servicioAPagarSeleccionado) {
@@ -142,18 +145,18 @@ function pagarServicio() {
       ejecutarPagoDeServicio(internet);
       break;
     default:
-      alert("El servicio seleccionado no existe");
+      alert(`El servicio seleccionado no existe`);
   }
   actualizarSaldoEnPantalla();
 }
 
 //Función para el pago de servicio
 function ejecutarPagoDeServicio(servicioAPagarSeleccionado) {
-  if  (servicioAPagarSeleccionado > saldoCuenta) {
-    alert("Tu saldo es insuficiente para pagar este servicio");
+  if (servicioAPagarSeleccionado > saldoCuenta) {
+    alert(`Tu saldo es insuficiente para pagar este servicio`);
   } else {
     saldoCuenta -= servicioAPagarSeleccionado;
-    alert("Tu pago fue realizado con éxito");
+    alert(`Tu pago fue realizado con éxito`);
   }
 }
 
@@ -164,28 +167,26 @@ function servicioAPagarNoEsNumero(servicioAPagarSeleccionado) {
 function transferirDinero() {
   const cuentaAmiga1 = 1234567;
   const cuentaAmiga2 = 7654321;
-  let cuentaSeleccionada = parseInt(prompt("Seleccione la cuenta a la que desea transferir" +
-    "\n" +
-    "Cuentas amigas:" +
-    "\n" +
-    cuentaAmiga1 +
-    "\n" +
-    cuentaAmiga2));
+  let cuentaSeleccionada = parseInt(prompt(`Seleccione la cuenta a la que desea transferir
+    Cuentas amigas:
+    ${cuentaAmiga1}
+    ${cuentaAmiga2}`));
 
   if (cuentaSeleccionada !== cuentaAmiga1 && cuentaSeleccionada !== cuentaAmiga2) {
-    return alert("La cuenta ingresada no pertenece a tus amigos");
+    return alert(`La cuenta ingresada no pertenece a tus amigos`);
   }
 
-  let montoATransferir = parseInt(prompt("Ingrese el monto que desea transferir"));
+  let montoATransferir = parseInt(prompt(`Ingrese el monto que desea transferir`));
   if (montoATransferirNoEsNumero(montoATransferir)) {
-    return alert("Solo puedes ingresar números");
+    return alert(`Solo puedes ingresar números`);
   } else if (montoATransferirEsNegativoOCero(montoATransferir)) {
-    return alert("Solo puedes ingresar montos mayores a 0");
+    return alert(`Solo puedes ingresar montos mayores a 0`);
   } else if (montoATransferir > saldoCuenta) {
-    alert("No posees la suficiente cantidad de dinero para la transferencia");
+    alert(`No posees la suficiente cantidad de dinero para la transferencia`);
   } else {
     restarDineroACuenta(montoATransferir);
-    alert("Se ha transferido: " + montoATransferir + "\n" + "Cuenta destino: " + cuentaSeleccionada);
+    alert(`Se ha transferido: ${montoATransferir}
+    Cuenta destino: ${cuentaSeleccionada}`);
   }
   actualizarSaldoEnPantalla();
 }
@@ -205,19 +206,18 @@ function otorgarPrestamo() {
   let totalPrestamo = 10000;
   let tasaDeInteresDecimal = 0.012;
   let tasaDeInteresEntera = (tasaDeInteresDecimal * 100);
-  const confirmacionOtorgamientoDePrestamo = parseInt(prompt("Desea acceder a un préstamo por " + totalPrestamo + " con una tasa de interés del " +
-    tasaDeInteresEntera + "\n" +
-    "1 - Si" + "\n" +
-    "2- No"));
+  const confirmacionOtorgamientoDePrestamo = parseInt(prompt(`Desea acceder a un préstamo por ${totalPrestamo} con una tasa de interés del ${tasaDeInteresEntera}
+  1 - Si
+  2- No`));
 
   if (prestamoNoEsNumero(confirmacionOtorgamientoDePrestamo)) {
-    return alert("Solo puedas ingresar números");
+    return alert(`Solo puedas ingresar números`);
   } else if (prestamoEsNumeroNegativoOCero(confirmacionOtorgamientoDePrestamo)) {
-    return alert("Solo puedes elegir entre las opciones 1- Si o 2- No");
+    return alert(`Solo puedes elegir entre las opciones 1- Si o 2- No`);
   } else if (confirmacionOtorgamientoDePrestamo === 2) {
-    alert("Gracias por operar con Homebanking");
+    return alert(`Gracias por operar con Homebanking`);
   } else {
-    saldoCuenta += totalPrestamo + (totalPrestamo * tasaDeInteresDecimal);
+    saldoCuenta += totalPrestamo - (totalPrestamo * tasaDeInteresDecimal);
   }
   actualizarSaldoEnPantalla();
 }
@@ -233,13 +233,13 @@ function prestamoEsNumeroNegativoOCero(confirmacionOtorgamientoDePrestamo) {
 
 function iniciarSesion() {
   const passwordCuenta = 4343;
-  const codigoCuentaIngresado = parseInt(prompt("Ingrese la constraseña de su cuenta"));
+  const codigoCuentaIngresado = parseInt(prompt(`Ingrese la constraseña de su cuenta`));
 
   if (codigoCuentaIngresado !== 4343) {
     saldoCuenta -= saldoCuenta;
-    alert("Tu dinero ha sido retenido por cuestiones de seguridad");
+    alert(`Tu dinero ha sido retenido por cuestiones de seguridad`);
   } else {
-    alert("Bienivenido/a " + nombreUsuario + " ya puedes ingresar a tu cuenta");
+    alert(`Bienivenido/a ${nombreUsuario} ya puedes ingresar a tu cuenta`);
   }
 }
 
