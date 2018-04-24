@@ -93,9 +93,9 @@ function depositarDinero() {
   let saldoAnteriorAlDeposito = saldoCuenta;
   let cantidadDeposito = prompt("¿Cuánto desea depositar?");
   let saldoADepositar = parseInt(cantidadDeposito);
-  if (depositarDineroEsNaN(saldoADepositar)) {
+  if (depositarDineroNoEsNumero(saldoADepositar)) {
     return alert("Solo puedes ingresar números");
-  } else if (depositoEsNegativo(saldoADepositar)) {
+  } else if (depositoEsNegativoOCero(saldoADepositar)) {
     return alert("Solo puedes ingresar montos mayores a 0");
   }
   sumarDineroACuenta(saldoADepositar);
@@ -105,11 +105,11 @@ function depositarDinero() {
 }
 
 //Validaciones para deposito de dinero
-function depositarDineroEsNaN(saldoADepositar) {
+function depositarDineroNoEsNumero(saldoADepositar) {
   return isNaN(saldoADepositar);
 }
 
-function depositoEsNegativo(saldoADepositar) {
+function depositoEsNegativoOCero(saldoADepositar) {
   return (saldoADepositar <= 0);
 }
 
@@ -126,7 +126,7 @@ function pagarServicio() {
     "3- Luz" + "\n" +
     "4- Internet"));
 
-  if (servicioAPagarEsNaN(servicioAPagarSeleccionado)) {
+  if (servicioAPagarNoEsNumero(servicioAPagarSeleccionado)) {
     return alert("Solo puedes ingresar números");
   }
 
@@ -151,7 +151,7 @@ function pagarServicio() {
 
 //Función para el pago de servicio
 function ejecutarPagoDeServicio(servicioAPagarSeleccionado) {
-  if (servicioAPagarSeleccionado > saldoCuenta) {
+  if  (servicioAPagarSeleccionado > saldoCuenta) {
     alert("Tu saldo es insuficiente para pagar este servicio");
   } else {
     saldoCuenta -= servicioAPagarSeleccionado;
@@ -159,16 +159,8 @@ function ejecutarPagoDeServicio(servicioAPagarSeleccionado) {
   }
 }
 
-function servicioAPagarEsNaN(servicioAPagarSeleccionado) {
+function servicioAPagarNoEsNumero(servicioAPagarSeleccionado) {
   return isNaN(servicioAPagarSeleccionado);
-}
-
-function prestamoEsNaN(confirmacionOtorgamientoDePrestamo) {
-  return isNaN(confirmacionOtorgamientoDePrestamo);
-}
-
-function prestamoEsNumeroNegativo(confirmacionOtorgamientoDePrestamo) {
-  return confirmacionOtorgamientoDePrestamo <= 0;
 }
 
 function transferirDinero() {
@@ -211,7 +203,7 @@ function montoATransferirEsNegativo(montoATransferir) {
 
 //Funcionalidad nueva: otorgamiento de préstamo
 
-function otorgarPrestamo(servicioAPagarSeleccionado) {
+function otorgarPrestamo() {
   let totalPrestamo = 10000;
   let tasaDeInteresDecimal = 0.012;
   let tasaDeInteresEntera = (tasaDeInteresDecimal * 100);
@@ -220,7 +212,7 @@ function otorgarPrestamo(servicioAPagarSeleccionado) {
     "1 - Si" + "\n" +
     "2- No"));
 
-  if (servicioAPagarEsNaN(confirmacionOtorgamientoDePrestamo)) {
+  if (prestamoEsNaN(confirmacionOtorgamientoDePrestamo)) {
     return alert("Solo puedas ingresar números");
   } else if (prestamoEsNumeroNegativo(confirmacionOtorgamientoDePrestamo)) {
     return alert("Solo puedes elegir entre las opciones 1- Si o 2- No");
@@ -230,6 +222,15 @@ function otorgarPrestamo(servicioAPagarSeleccionado) {
     saldoCuenta += totalPrestamo + (totalPrestamo * tasaDeInteresDecimal);
   }
   actualizarSaldoEnPantalla();
+}
+
+//Validaciones prestamo
+function prestamoEsNaN(confirmacionOtorgamientoDePrestamo) {
+  return isNaN(confirmacionOtorgamientoDePrestamo);
+}
+
+function prestamoEsNumeroNegativo(confirmacionOtorgamientoDePrestamo) {
+  return confirmacionOtorgamientoDePrestamo <= 0;
 }
 
 function iniciarSesion() {
